@@ -2,6 +2,7 @@
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
 using System;
+using System.Collections.Generic;
 
 namespace generalizator
 {
@@ -35,7 +36,16 @@ namespace generalizator
 
         public static Geometry DouglasGeneralize(Geometry geometry, float corridorWidth)
         {
+            Coordinate[] coordinates = geometry.Coordinates;
+            List<Coordinate> coordsList = new List<Coordinate>(coordinates);
             //TODO
+            bool allInCorridor = false;
+
+            while(!allInCorridor)
+            {
+
+            }
+
             return geometry;
         }
 
