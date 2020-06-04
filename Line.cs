@@ -1,5 +1,6 @@
-﻿using DotSpatial.Topology;
-using DotSpatial.Topology.Index.Strtree;
+﻿using NetTopologySuite.Features;
+using NetTopologySuite.Geometries;
+using NetTopologySuite.IO;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -10,7 +11,7 @@ namespace generalizator
     {
         private double a, b, c;
 
-        public Line()
+        public Line(Coordinate coordinate)
         {
             this.a = 0;
             this.b = 0;
@@ -41,7 +42,7 @@ namespace generalizator
 
         public double Y(double x)
         {
-            return a * x + b;            
+            return (a * x + c)/b;
         }
 
         public double X(double y)
@@ -51,14 +52,13 @@ namespace generalizator
 
         public void fromPoints(Coordinate pointA, Coordinate pointB)
         {
-            double A=0, B=0, C=0;
             if (pointA.X - pointB.X != 0)
             {
                 if(pointA.Y - pointB.Y != 0) //obliczenie wspolczynnikow
                 {
-                    A = -(pointA.Y - pointB.Y) / (pointA.X - pointB.X);
-                    B = 1;
-                    C = -(pointA.X * pointB.Y - pointA.Y * pointB.X) / (pointA.X - pointB.X);
+                    this.a = (pointA.Y - pointB.Y) / (pointA.X - pointB.X);
+                    this.b = -1;
+                    this.c = (pointA.X * pointB.Y - pointA.Y * pointB.X) / (pointA.X - pointB.X);
                 }
                 else //pozioma linia
                 {
@@ -77,6 +77,9 @@ namespace generalizator
                 }
                 else //punkty są rowne
                 {
+                    this.a = 0;
+                    this.b = 0;
+                    this.c = 0;
                     //invalid line
                 }
             }
@@ -84,7 +87,7 @@ namespace generalizator
 
         public double DistanceFromLine(Coordinate point)
         {
-            return Math.Abs(a * point.X + b * point.Y + C) / Math.Sqrt(a * a + b * b);
+            return Math.Abs(a * point.X + b * point.Y + c) / Math.Sqrt(a * a + b * b);
         }
     }
 
