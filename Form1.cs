@@ -36,6 +36,8 @@ namespace Generalizer
             generalizedButton.Enabled = false;
             bothButton.Enabled = false;
             trackBar1.Enabled = false;
+            zoomButton.Enabled = false;
+            moveButton.Enabled = false;
 
             originalShapefile = new Shapefile();
             generalizedShapefile = new Shapefile();
@@ -91,13 +93,14 @@ namespace Generalizer
                 originalButton.Enabled = true;
                 axMap1.ZoomToLayer(originalLayer);
 
-                //to do zmiany potem
                 if (generalizedShapefile.Open(Program.outputFileName, null))
                 {
                     generalizedLayer = axMap1.AddLayer(generalizedShapefile, true);
                     generalizedButton.Enabled = true;
                     bothButton.Enabled = true;
                     trackBar1.Enabled = true;
+                    zoomButton.Enabled = true;
+                    moveButton.Enabled = true;
                 }
             }
 
@@ -144,6 +147,16 @@ namespace Generalizer
             Program.GeneralizeFile();
 
             AddLayers(true);
+        }
+
+        private void ZoomButton_Click(object sender, EventArgs e)
+        {
+            axMap1.CursorMode = tkCursorMode.cmZoomIn;
+        }
+
+        private void MoveButton_Click(object sender, EventArgs e)
+        {
+            axMap1.CursorMode = tkCursorMode.cmPan;
         }
     }
 }
