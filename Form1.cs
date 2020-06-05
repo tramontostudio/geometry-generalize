@@ -29,6 +29,8 @@ namespace Generalizer
         private int generalizedLayer;
         CurrentLayer currentLayer;
 
+        private float divider;
+
         public Form1()
         {
             InitializeComponent();
@@ -38,9 +40,13 @@ namespace Generalizer
             trackBar1.Enabled = false;
             zoomButton.Enabled = false;
             moveButton.Enabled = false;
+            trackBar2.Enabled = false;
 
             originalShapefile = new Shapefile();
             generalizedShapefile = new Shapefile();
+
+            divider = 10000f;
+            dividerLabel.Text = divider.ToString();
 
             //axMap1.Projection = MapWinGIS.tkMapProjection.PROJECTION_GOOGLE_MERCATOR;
             //axMap1.TileProvider = MapWinGIS.tkTileProvider.OpenStreetMap;
@@ -76,7 +82,7 @@ namespace Generalizer
 
         private void TrackBar1_Scroll(object sender, EventArgs e)
         {
-            Program.corridorWidth = (trackBar1.Value / 500f);
+            Program.corridorWidth = (trackBar1.Value / divider);
             trackBarLabel.Text = Program.corridorWidth.ToString();
 
             axMap1.RemoveAllLayers();
@@ -91,7 +97,6 @@ namespace Generalizer
             {
                 originalLayer = axMap1.AddLayer(originalShapefile, true);
                 originalButton.Enabled = true;
-                axMap1.ZoomToLayer(originalLayer);
 
                 if (generalizedShapefile.Open(Program.outputFileName, null))
                 {
@@ -101,6 +106,7 @@ namespace Generalizer
                     trackBar1.Enabled = true;
                     zoomButton.Enabled = true;
                     moveButton.Enabled = true;
+                    trackBar2.Enabled = true;
                 }
             }
 
@@ -108,6 +114,7 @@ namespace Generalizer
             {
                 viewLabel.Text = "Original";
                 currentLayer = CurrentLayer.OriginalLayer;
+                axMap1.ZoomToLayer(originalLayer);
             }
 
             switch (currentLayer)
@@ -157,6 +164,38 @@ namespace Generalizer
         private void MoveButton_Click(object sender, EventArgs e)
         {
             axMap1.CursorMode = tkCursorMode.cmPan;
+        }
+
+        private void trackBar2_Scroll(object sender, EventArgs e)
+        {
+            switch(trackBar2.Value)
+            {
+                case 5:
+                    divider = 1f;
+                    break;
+                case 4:
+                    divider = 10f;
+                    break;
+                case 3:
+                    divider = 100f;
+                    break;
+                case 2:
+                    divider = 1000f;
+                    break;
+                case 1:
+                    divider = 10000f;
+                    break;
+            }
+            
+            dividerLabel.Text = divider.ToString();
+
+            Program.corridorWidth = (trackBar1.Value / divider);
+            trackBarLabel.Text = Program.corridorWidth.ToString();
+
+            axMap1.RemoveAllLayers();
+            Program.GeneralizeFile();
+
+            AddLayers(false);
         }
     }
 }

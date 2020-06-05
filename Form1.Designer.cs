@@ -45,8 +45,11 @@ namespace Generalizer
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.trackBar2 = new System.Windows.Forms.TrackBar();
+            this.dividerLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axMap1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).BeginInit();
             this.SuspendLayout();
             // 
             // originalButton
@@ -81,11 +84,11 @@ namespace Generalizer
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(33, 302);
+            this.trackBar1.Location = new System.Drawing.Point(52, 302);
             this.trackBar1.Maximum = 20;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.trackBar1.Size = new System.Drawing.Size(122, 45);
+            this.trackBar1.Size = new System.Drawing.Size(103, 45);
             this.trackBar1.TabIndex = 4;
             this.trackBar1.TickStyle = System.Windows.Forms.TickStyle.TopLeft;
             this.trackBar1.Scroll += new System.EventHandler(this.TrackBar1_Scroll);
@@ -183,11 +186,33 @@ namespace Generalizer
             this.label3.TabIndex = 12;
             this.label3.Text = "Corridor Width";
             // 
+            // trackBar2
+            // 
+            this.trackBar2.Location = new System.Drawing.Point(52, 336);
+            this.trackBar2.Maximum = 5;
+            this.trackBar2.Minimum = 1;
+            this.trackBar2.Name = "trackBar2";
+            this.trackBar2.Size = new System.Drawing.Size(103, 45);
+            this.trackBar2.TabIndex = 13;
+            this.trackBar2.Value = 1;
+            this.trackBar2.Scroll += new System.EventHandler(this.trackBar2_Scroll);
+            // 
+            // dividerLabel
+            // 
+            this.dividerLabel.AutoSize = true;
+            this.dividerLabel.Location = new System.Drawing.Point(14, 345);
+            this.dividerLabel.Name = "dividerLabel";
+            this.dividerLabel.Size = new System.Drawing.Size(13, 13);
+            this.dividerLabel.TabIndex = 14;
+            this.dividerLabel.Text = "1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 450);
+            this.Controls.Add(this.dividerLabel);
+            this.Controls.Add(this.trackBar2);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -205,6 +230,7 @@ namespace Generalizer
             this.Text = "Geometry Generalize";
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.axMap1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.trackBar2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,6 +252,8 @@ namespace Generalizer
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TrackBar trackBar2;
+        private System.Windows.Forms.Label dividerLabel;
     }
 }
 
