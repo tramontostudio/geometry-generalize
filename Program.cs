@@ -21,8 +21,8 @@ namespace Generalizer
     static class Program
     {
         public static string inputFile = string.Empty;
-        public static string outputFile = "C:\\Users\\Dominik\\Documents\\geometry-generalize\\output";
-        public static string outputFileName = "C:\\Users\\Dominik\\Documents\\geometry-generalize\\output\\output.shp";
+        public static string outputFile = ".\\output";
+        public static string outputFileName = ".\\output\\output.shp";
         public static double corridorWidth = 0f;
 
         public static Feature CreateFeature(Coordinate[] coords)
