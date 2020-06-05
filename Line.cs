@@ -1,11 +1,13 @@
-﻿using NetTopologySuite.Features;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using NetTopologySuite.Features;
 using NetTopologySuite.Geometries;
 using NetTopologySuite.IO;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace generalizator
+namespace Generalizer
 {
     class Line
     {
@@ -42,7 +44,7 @@ namespace generalizator
 
         public double Y(double x)
         {
-            return (a * x + c)/b;
+            return (a * x + c) / b;
         }
 
         public double X(double y)
@@ -54,7 +56,7 @@ namespace generalizator
         {
             if (pointA.X - pointB.X != 0)
             {
-                if(pointA.Y - pointB.Y != 0) //obliczenie wspolczynnikow
+                if (pointA.Y - pointB.Y != 0) //obliczenie wspolczynnikow
                 {
                     this.a = (pointA.Y - pointB.Y) / (pointA.X - pointB.X);
                     this.b = -1;
@@ -64,7 +66,7 @@ namespace generalizator
                 {
                     this.a = 0;
                     this.b = 1;
-                    this.c = - pointA.Y;
+                    this.c = -pointA.Y;
                 }
             }
             else
@@ -90,5 +92,4 @@ namespace generalizator
             return Math.Abs(a * point.X + b * point.Y + c) / Math.Sqrt(a * a + b * b);
         }
     }
-
 }
