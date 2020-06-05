@@ -40,13 +40,18 @@ namespace Generalizer
             this.chooseFileButton = new System.Windows.Forms.Button();
             this.bothButton = new System.Windows.Forms.Button();
             this.axMap1 = new AxMapWinGIS.AxMap();
+            this.zoomButton = new System.Windows.Forms.Button();
+            this.moveButton = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.trackBar1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.axMap1)).BeginInit();
             this.SuspendLayout();
             // 
             // originalButton
             // 
-            this.originalButton.Location = new System.Drawing.Point(15, 42);
+            this.originalButton.Location = new System.Drawing.Point(15, 155);
             this.originalButton.Name = "originalButton";
             this.originalButton.Size = new System.Drawing.Size(140, 29);
             this.originalButton.TabIndex = 1;
@@ -56,7 +61,7 @@ namespace Generalizer
             // 
             // generalizedButton
             // 
-            this.generalizedButton.Location = new System.Drawing.Point(15, 77);
+            this.generalizedButton.Location = new System.Drawing.Point(15, 190);
             this.generalizedButton.Name = "generalizedButton";
             this.generalizedButton.Size = new System.Drawing.Size(140, 29);
             this.generalizedButton.TabIndex = 2;
@@ -70,14 +75,13 @@ namespace Generalizer
             this.viewLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.viewLabel.Location = new System.Drawing.Point(646, 9);
             this.viewLabel.Name = "viewLabel";
-            this.viewLabel.Size = new System.Drawing.Size(75, 24);
+            this.viewLabel.Size = new System.Drawing.Size(0, 24);
             this.viewLabel.TabIndex = 3;
-            this.viewLabel.Text = "Original";
             this.viewLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // trackBar1
             // 
-            this.trackBar1.Location = new System.Drawing.Point(33, 165);
+            this.trackBar1.Location = new System.Drawing.Point(33, 302);
             this.trackBar1.Maximum = 20;
             this.trackBar1.Name = "trackBar1";
             this.trackBar1.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -89,7 +93,7 @@ namespace Generalizer
             // trackBarLabel
             // 
             this.trackBarLabel.AutoSize = true;
-            this.trackBarLabel.Location = new System.Drawing.Point(12, 177);
+            this.trackBarLabel.Location = new System.Drawing.Point(14, 316);
             this.trackBarLabel.Name = "trackBarLabel";
             this.trackBarLabel.Size = new System.Drawing.Size(13, 13);
             this.trackBarLabel.TabIndex = 5;
@@ -101,7 +105,7 @@ namespace Generalizer
             // 
             // chooseFileButton
             // 
-            this.chooseFileButton.Location = new System.Drawing.Point(15, 245);
+            this.chooseFileButton.Location = new System.Drawing.Point(15, 387);
             this.chooseFileButton.Name = "chooseFileButton";
             this.chooseFileButton.Size = new System.Drawing.Size(140, 29);
             this.chooseFileButton.TabIndex = 6;
@@ -111,7 +115,7 @@ namespace Generalizer
             // 
             // bothButton
             // 
-            this.bothButton.Location = new System.Drawing.Point(15, 112);
+            this.bothButton.Location = new System.Drawing.Point(15, 225);
             this.bothButton.Name = "bothButton";
             this.bothButton.Size = new System.Drawing.Size(140, 29);
             this.bothButton.TabIndex = 7;
@@ -128,11 +132,67 @@ namespace Generalizer
             this.axMap1.Size = new System.Drawing.Size(995, 396);
             this.axMap1.TabIndex = 0;
             // 
+            // zoomButton
+            // 
+            this.zoomButton.Location = new System.Drawing.Point(87, 42);
+            this.zoomButton.Name = "zoomButton";
+            this.zoomButton.Size = new System.Drawing.Size(68, 71);
+            this.zoomButton.TabIndex = 8;
+            this.zoomButton.Text = "Zoom";
+            this.zoomButton.UseVisualStyleBackColor = true;
+            this.zoomButton.Click += new System.EventHandler(this.ZoomButton_Click);
+            // 
+            // moveButton
+            // 
+            this.moveButton.Location = new System.Drawing.Point(17, 42);
+            this.moveButton.Name = "moveButton";
+            this.moveButton.Size = new System.Drawing.Size(68, 71);
+            this.moveButton.TabIndex = 9;
+            this.moveButton.Text = "Move";
+            this.moveButton.UseVisualStyleBackColor = true;
+            this.moveButton.Click += new System.EventHandler(this.MoveButton_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label1.Location = new System.Drawing.Point(49, 16);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(86, 17);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Cursor Type";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label2.Location = new System.Drawing.Point(61, 126);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 17);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Layers";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label3.Location = new System.Drawing.Point(36, 273);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(99, 17);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Corridor Width";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 450);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.moveButton);
+            this.Controls.Add(this.zoomButton);
             this.Controls.Add(this.bothButton);
             this.Controls.Add(this.chooseFileButton);
             this.Controls.Add(this.trackBarLabel);
@@ -161,6 +221,11 @@ namespace Generalizer
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button chooseFileButton;
         private System.Windows.Forms.Button bothButton;
+        private System.Windows.Forms.Button zoomButton;
+        private System.Windows.Forms.Button moveButton;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 }
 
